@@ -65,5 +65,98 @@ In a predator-prey model, the equilibrium densities of prey (\(H^*\)) and predat
 ### Stability in Discrete-Time Models
 A discrete-time model is stable if the absolute value of the slope of the system's response is less than one. This condition ensures that the system's deviations from equilibrium diminish over time.
 
+### Example
+
+These examples demonstrate how to find equilibrium points and analyze stability for different models in computational science using Python. Each example includes solving equations for equilibrium points and performing stability analysis using methods such as eigenvalues of Jacobian matrices or discrete-time stability criteria.
+
+### Example 1: Logistic Model Equilibrium Analysis
+
+```python
+import sympy as sp
+
+# Define symbols and variables
+N = sp.symbols('N')
+r, K = sp.symbols('r K', positive=True)
+
+# Define the logistic model equation
+dN_dt = r * N * (1 - N / K)
+
+# Find equilibrium points by solving dN/dt = 0
+equilibria = sp.solve(dN_dt, N)
+print("Equilibrium points for Logistic Model:")
+for eq in equilibria:
+    print(f"N = {eq}")
+
+# Stability analysis
+for eq in equilibria:
+    jacobian_matrix = sp.Matrix([[sp.diff(dN_dt, N)]])
+    stability_condition = jacobian_matrix.subs(N, eq)
+    if stability_condition < 0:
+        print(f"N = {eq} is stable.")
+    else:
+        print(f"N = {eq} is unstable.")
+```
+
+### Example 2: Chemical Plant Model Equilibrium Analysis
+
+```python
+import numpy as np
+from scipy.linalg import eig
+
+# Define parameters
+a = 0.5  # Example value
+u, d = 1, 1  # Example inputs
+
+# Define the system matrix and equilibrium point
+A = np.array([[-a, 0],
+              [a, -a]])
+b = np.array([[u],
+              [d]])
+x_eq = np.linalg.solve(A, b)
+
+print("Equilibrium point (x1, x2):", x_eq)
+
+# Stability analysis using eigenvalues
+eigenvalues, _ = eig(A)
+print("Eigenvalues:", eigenvalues)
+if np.all(np.real(eigenvalues) < 0):
+    print("The system is stable.")
+else:
+    print("The system is unstable.")
+```
+
+### Example 3: Predator-Prey Model Equilibrium Analysis
+
+```python
+from sympy import symbols, Matrix
+from sympy.solvers import solve
+
+# Define symbols and variables
+H, P = symbols('H P')
+a, b, c, d = 0.5, 0.5, 0.5, 0.5  # Example parameters
+
+# Define predator-prey model equations
+dH_dt = a * H - b * H * P
+dP_dt = -c * P + d * H * P
+
+# Find equilibrium points by solving dH/dt = 0 and dP/dt = 0
+equilibria = solve((dH_dt, dP_dt), (H, P))
+print("Equilibrium points for Predator-Prey Model:")
+for eq in equilibria:
+    print(f"H = {eq[0]}, P = {eq[1]}")
+
+# Stability analysis
+for eq in equilibria:
+    jacobian_matrix = Matrix([[dH_dt.diff(H), dH_dt.diff(P)],
+                              [dP_dt.diff(H), dP_dt.diff(P)]])
+    stability_condition = jacobian_matrix.subs({H: eq[0], P: eq[1]}).eigenvals()
+    if all([eig.real < 0 for eig in stability_condition]):
+        print(f"H = {eq[0]}, P = {eq[1]} is stable.")
+    else:
+        print(f"H = {eq[0]}, P = {eq[1]} is unstable.")
+```
+
+
+
 ### Conclusion
 Understanding equilibrium and stability in computational science is essential for predicting system behavior. Through various models and examples, we have seen how equilibrium analysis helps in designing and controlling systems in fields ranging from chemical processing to ecological modeling.
