@@ -1,8 +1,8 @@
-# Equilibrium Analysis in Computational Science
-
-## Speaker: Heider Jeffer
-## instructor: Mehdi Jazayeri 
-### Topic: Computational Science - Equilibrium Analysis
+#### Equilibrium Analysis in Computational Science
+#### Speaker: Heider Jeffer
+#### instructor: Mehdi Jazayeri 
+#### Assistant: Dr. Sasa Nesic
+#### Topic: Computational Science - Equilibrium Analysis
 
 ### Introduction to Equilibrium
 The equilibrium of a system is a state where the system experiences no net change. Equilibrium analysis in computational science is crucial for understanding the behavior of systems under various conditions. Here, we will discuss the different types of equilibrium, their stability, and examples of how they are analyzed in various models.
