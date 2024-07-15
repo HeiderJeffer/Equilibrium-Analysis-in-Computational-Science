@@ -1,6 +1,7 @@
 # Equilibrium Analysis in Computational Science
 
 ## Speaker: Heider Jeffer
+## instructor: Mehdi Jazayeri 
 ### Topic: Computational Science - Equilibrium Analysis
 
 ### Introduction to Equilibrium
