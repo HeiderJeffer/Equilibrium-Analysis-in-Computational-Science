@@ -1,3 +1,7 @@
+<body>
+<img src = "https://github-vistors-counter.onrender.com/github?username=https://github.com/HeiderJeffer/MSc.-ETH-Zurich-and-USI-Equilibrium-Analysis-in-Computational-Science" alt = "Visitors-Counter"/>
+</body>
+
 #### Equilibrium Analysis in Computational Science
 #### Speaker: Heider Jeffer
 #### instructor: Mehdi Jazayeri 
